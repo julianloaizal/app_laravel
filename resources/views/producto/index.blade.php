@@ -20,6 +20,9 @@
                         <div class="col-auto my-1">
                             <input type="submit" class="btn btn-primary" value="Buscar">
                         </div>
+                        <div class="col-auto my-1">
+                            <a href="{{route('producto.create')}}" class="btn btn-success">Nuevo</a>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -57,7 +60,7 @@
 
                           </tbody>
                     </table>
-                    {{$producto->links}}
+                   
                 </div>
             </div>
         </div>

@@ -13,4 +13,7 @@ class Producto extends Model
     protected $filltable = [
         'nombre','talla', 'marca_producto', 'cantidad_inventario', 'fecha_embarque'
     ];
+
+    public $timestamps = false;
+    
 }

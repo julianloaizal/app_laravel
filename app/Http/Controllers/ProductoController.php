@@ -38,7 +38,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+       return view('producto.create');//
     }
 
     /**
@@ -49,6 +49,14 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+        $producto = new Producto;
+        $producto->nombre=$request->input('nombre');
+        $producto->talla=$request->input('talla');
+        $producto->marca_producto=$request->input('marca_producto');
+        $producto->cantidad_inventario=$request->input('cantidad_inventario');
+        $producto->fecha_embarque=$request->input('fecha_embarque');
+        $producto->save();
+        return redirect()->route('producto.index');
         //
     }
 
@@ -96,4 +104,5 @@ class ProductoController extends Controller
     {
         //
     }
+    
 }
