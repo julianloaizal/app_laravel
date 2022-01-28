@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Marca;
+use Illuminate\Support\Facades\DB;
 
 class MarcaController extends Controller
 {
@@ -12,11 +13,19 @@ class MarcaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $marcas=Marca::all();
-        return view('marca.index', compact('marcas'));
+        //$marcas=Marca::all();
+        //return view('marca.index', compact('marcas'));
+        $texto=trim($request->get('texto')); //declaración variable, que es lo que tengo en el objeto por medio de request
+        //se hace referecnia al facade DB
+        $marcas=DB ::table('marca')
+                        ->select('id','nombre') 
+                        ->where('nombre', 'LIKE', '%'.$texto.'%')                       
+                        ->orderBy('nombre', 'asc')
+                        ->paginate(10);
+        return view('marca.index', compact('marcas', 'texto'));
     }
 
     /**

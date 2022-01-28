@@ -12,10 +12,10 @@
         <h4>Gestión de Marcas</h4>
         <div class="row">
             <div class="col-xl-12">
-                <form action="">
+                <form action="{{route('marca.index')}}" method="get">
                     <div class="form-row">
                         <div class="col-sm-4 my-1">
-                            <input type="text" class="form-control" name="texto">
+                            <input type="text" class="form-control" name="texto" value="{{$texto}}">
                         </div>
                         <div class="col-auto my-1">
                             <input type="submit" class="btn btn-primary" value="Buscar">
@@ -34,7 +34,12 @@
                               </tr>
 
                           </thead>
-                          <tbody>
+                          <tbody>                              
+                            @if(count($marcas)<=0)
+                              <tr>
+                                  <td colspan="3">No hay resultados</td>
+                              </tr>
+                              @else
                               @foreach($marcas as $marca)
                               <tr>                                  
                                   <th>{{$marca->id}}</th>
@@ -42,6 +47,7 @@
                                   <th>Editar | Eliminar</th>
                               </tr>
                               @endforeach
+                              @endif
 
                           </tbody>
                     </table>
