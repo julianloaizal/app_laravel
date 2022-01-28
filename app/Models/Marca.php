@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Marca extends Model
 {
     //use HasFactory;
-    protected $table="cliente";
+    protected $table="marca";
     protected $primaryKey="id";
     protected $filltable = [
         'nombre'

@@ -9,8 +9,8 @@ class Producto extends Model
 {
     //use HasFactory;
     protected $table="producto";
-    protected $primaryKey="id";
+    protected $index="marca_producto";
     protected $filltable = [
-        'nombre'
+        'nombre','talla', 'marca_producto', 'cantidad_inventario', 'fecha_embarque'
     ];
 }
