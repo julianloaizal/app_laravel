@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use Illuminate\Support\Facades\DB;
+
 class ProductoController extends Controller
 {
     /**
@@ -12,11 +14,21 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)//espero un objeto que recibo desde el formulario por medio de request
     {
         //
-        $productos=Producto::all();
-        return view('producto.index', compact('productos'));
+        $texto=trim($request->get('texto')); //declaración variable, que es lo que tengo en el objeto por medio de request
+        //se hace referecnia al facade DB
+        $productos=DB ::table('producto')
+                        ->select('nombre','talla', 'marca_producto','cantidad_inventario','fecha_embarque')
+                        ->where('nombre', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('talla', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('marca_producto', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('cantidad_inventario', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('fecha_embarque', 'LIKE', '%'.$texto.'%')
+                        ->orderBy('nombre', 'asc')
+                        ->paginate(10);
+        return view('producto.index', compact('productos', 'texto'));
     }
 
     /**

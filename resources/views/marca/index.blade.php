@@ -11,6 +11,18 @@
     <div class="container">
         <h4>Gestión de Marcas</h4>
         <div class="row">
+            <div class="col-xl-12">
+                <form action="">
+                    <div class="form-row">
+                        <div class="col-sm-4 my-1">
+                            <input type="text" class="form-control" name="texto">
+                        </div>
+                        <div class="col-auto my-1">
+                            <input type="submit" class="btn btn-primary" value="Buscar">
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="col-lx-12">
                 <div class="table-responsive">
                     <table class="table table-striped">
