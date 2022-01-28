@@ -53,7 +53,7 @@
                                   <th>{{$producto->marca_producto}}</th>
                                   <th>{{$producto->cantidad_inventario}}</th>
                                   <th>{{$producto->fecha_embarque}}</th>
-                                  <th>Editar | Eliminar</th>
+                                  <th><a href="{{route('producto.edit', $producto->nombre)}}" class="btn btn-warning btn-sm">Editar</a> | Eliminar</th>
                               </tr>
                               @endforeach
                               @endif

@@ -77,9 +77,11 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($nombre)
     {
-        //
+        $producto=Producto::findOrFail($nombre);
+        //return view('producto.edit',compact('producto'));
+        return $producto;
     }
 
     /**
@@ -89,7 +91,7 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $nombre)
     {
         //
     }

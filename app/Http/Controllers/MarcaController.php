@@ -35,7 +35,7 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        //
+        return view('marca.create');//
     }
 
     /**
@@ -46,7 +46,10 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $marca = new Marca;
+        $marca->nombre=$request->input('nombre');
+        $marca->save();
+        return redirect()->route('marca.index');
     }
 
     /**
@@ -68,7 +71,9 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $marca=Marca::findOrFail($id);
+        //return view('marca.edit', compact('marca'));
+        return marca;
     }
 
     /**
