@@ -72,8 +72,8 @@ class MarcaController extends Controller
     public function edit($id)
     {
         $marca=Marca::findOrFail($id);
-        //return view('marca.edit', compact('marca'));
-        return marca;
+        return view('marca.edit', compact('marca'));
+        //return marca;
     }
 
     /**
@@ -85,7 +85,10 @@ class MarcaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $marca=Marca::findOrFail($id);
+        $marca->nombre=$request->input('nombre');
+        $marca->save();
+        return redirect()->route('marca.index');
     }
 
     /**

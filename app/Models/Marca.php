@@ -13,4 +13,6 @@ class Marca extends Model
     protected $filltable = [
         'nombre'
     ];
+
+    public $timestamps = false;
 }

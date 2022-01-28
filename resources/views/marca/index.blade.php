@@ -20,6 +20,9 @@
                         <div class="col-auto my-1">
                             <input type="submit" class="btn btn-primary" value="Buscar">
                         </div>
+                        <div class="col-auto my-1">
+                            <a href="{{route('marca.create')}}" class="btn btn-success">Nuevo</a>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -44,7 +47,7 @@
                               <tr>                                  
                                   <th>{{$marca->id}}</th>
                                   <th>{{$marca->nombre}}</th>
-                                  <th>Editar | Eliminar</th>
+                                  <th><a href="{{route('marca.edit', $marca->id)}}" class="btn btn-warning btn-sm">Editar</a> | Eliminar</th>
                               </tr>
                               @endforeach
                               @endif
