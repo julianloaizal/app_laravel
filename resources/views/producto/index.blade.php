@@ -38,6 +38,11 @@
 
                           </thead>
                           <tbody>
+                              @if(count($productos)<=0)
+                              <tr>
+                                  <td colspan="6">No hay resultados</td>
+                              </tr>
+                              @else
                               @foreach ($productos as $producto)
                               <tr>
                                   <th>{{$producto->nombre}}</th>
@@ -48,10 +53,11 @@
                                   <th>Editar | Eliminar</th>
                               </tr>
                               @endforeach
+                              @endif
 
                           </tbody>
                     </table>
-
+                    {{$producto->links}}
                 </div>
             </div>
         </div>
