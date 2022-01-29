@@ -20,7 +20,7 @@ class ProductoController extends Controller
         $texto=trim($request->get('texto')); //declaración variable, que es lo que tengo en el objeto por medio de request
         //se hace referecnia al facade DB
         $productos=DB ::table('producto')
-                        ->select('nombre','talla', 'marca_producto','cantidad_inventario','fecha_embarque')
+                        ->select('id','nombre','talla', 'marca_producto','cantidad_inventario','fecha_embarque')
                         ->where('nombre', 'LIKE', '%'.$texto.'%')
                         ->orwhere('talla', 'LIKE', '%'.$texto.'%')
                         ->orwhere('marca_producto', 'LIKE', '%'.$texto.'%')
@@ -77,11 +77,11 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($nombre)
+    public function edit($id)
     {
-        $producto=Producto::findOrFail($nombre);
-        //return view('producto.edit',compact('producto'));
-        return $producto;
+        $producto=Producto::findOrFail($id);
+        return view('producto.edit',compact('producto'));
+        //return $producto;
     }
 
     /**
@@ -91,9 +91,17 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $nombre)
+    public function update(Request $request, $id)
     {
-        //
+        $producto=Producto::findOrFail($id);
+        $producto->nombre=$request->input('nombre');
+        $producto->talla=$request->input('talla');
+        $producto->marca_producto=$request->input('marca_producto');
+        $producto->cantidad_inventario=$request->input('cantidad_inventario');
+        $producto->fecha_embarque=$request->input('fecha_embarque');
+        $producto->save();
+        return redirect()->route('producto.index');
+
     }
 
     /**

@@ -31,6 +31,7 @@
                     <table class="table table-striped">
                           <thead>
                               <tr>
+                                  <th>id</th>
                                   <th>Nombre</th>
                                   <th>Talla</th>
                                   <th>Marca producto</th>
@@ -43,17 +44,18 @@
                           <tbody>
                               @if(count($productos)<=0)
                               <tr>
-                                  <td colspan="6">No hay resultados</td>
+                                  <td colspan="7">No hay resultados</td>
                               </tr>
                               @else
                               @foreach ($productos as $producto)
                               <tr>
+                                  <th>{{$producto->id}}</th>
                                   <th>{{$producto->nombre}}</th>
                                   <th>{{$producto->talla}}</th>
                                   <th>{{$producto->marca_producto}}</th>
                                   <th>{{$producto->cantidad_inventario}}</th>
                                   <th>{{$producto->fecha_embarque}}</th>
-                                  <th><a href="{{route('producto.edit', $producto->nombre)}}" class="btn btn-warning btn-sm">Editar</a> | Eliminar</th>
+                                  <th><a href="{{route('producto.edit', $producto->id)}}" class="btn btn-warning btn-sm">Editar</a> | Eliminar</th>
                               </tr>
                               @endforeach
                               @endif
